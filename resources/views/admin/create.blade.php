@@ -1,25 +1,23 @@
 <x-template-layout>
 
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        {{$title}}
-    </h2>
+    
 
     <div class="shadow px-6 py-4 bg-gray-200 rounded sm:px-1 sm:py-1">
-        <form action="{{(isset($mahasiswa))?route('mahasiswa.update',$mahasiswa->id):route('mahasiswa.store')}}"
+        <form action="{{(isset($game))?route('game.update',$game->id):route('game.store')}}"
             method="POST">
             @csrf
 
-            @if(isset($mahasiswa))
+            @if(isset($game))
             @method('PUT')
             @endif
             <div class="shadow sm:rounded-md sm:overflow-hidden">
                 <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
                     <div>
                         <label id="listbox-label" class="block text-sm font-medium text-gray-700">
-                            Nama
+                            Nama Game
                         </label>
                         <div class="mt-1 relative">
-                            <input value="{{(isset($mahasiswa))?$mahasiswa->nama:old('nama')}}" type="text" name="nama"
+                            <input value="{{(isset($game))?$game->nama:old('nama')}}" type="text" name="nama"
                                 id="company_website"
                                 class="@error('nama') border-red-500 @enderror focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
                                 placeholder="Masukkan Nama">
@@ -30,26 +28,39 @@
 
                     <div>
                         <label id="listbox-label" class="block text-sm font-medium text-gray-700">
-                            NIK
+                            Platform
                         </label>
                         <div class="mt-1 relative">
-                            <input value="{{(isset($mahasiswa))?$mahasiswa->nik:old('nik')}}" type="text" name="nik"
+                            <input value="{{(isset($game))?$game->Platform:old('Platform')}}" type="text" name="Platform"
                                 id="company_website"
-                                class="@error('nik') border-red-500 @enderror focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                placeholder="Masukkan NIK">
+                                class="@error('Platform') border-red-500 @enderror focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                placeholder="Masukkan Platform">
 
                         </div>
-                        <div class="text-xs text-red-600">@error('nim') {{$message}} @enderror</div>
-                    </div>
+                        <div class="text-xs text-red-600">@error('Platform') {{$message}} @enderror</div>
+                    </div> 
                     <div>
                         <label id="listbox-label" class="block text-sm font-medium text-gray-700">
-                            Alamat
+                           Tahun Rilis
                         </label>
                         <div class="mt-1 relative">
-                            <input value="{{(isset($mahasiswa))?$mahasiswa->alamat:old('alamat')}}" type="text"
-                                name="alamat" id="company_website"
-                                class="@error('alamat') border-red-500 @enderror focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                placeholder="Masukkan Alamat">
+                            <input value="{{(isset($game))?$game->tahun_rilis:old('tahun_rilis')}}" type="text"
+                                name="tahun_rilis" id="company_website"
+                                class="@error('tahun_rilis') border-red-500 @enderror focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                placeholder="Masukkan Tahun Rilis"> 
+
+                        </div> 
+                        <div class="text-xs text-red-600">@error('title') {{$message}} @enderror</div>
+                    </div>
+                    <div> 
+                        <label id="listbox-label" class="block text-sm font-medium text-gray-700">
+                           Nama Kategori
+                        </label>
+                        <div class="mt-1 relative">
+                            <input value="{{(isset($game))?$game->nama_kategori:old('nama_kategori')}}" type="text"
+                                name="nama_kategori" id="company_website"
+                                class="@error('tahun_rilis') border-red-500 @enderror focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                placeholder="Masukkan Nama Kategori">
 
                         </div>
                         <div class="text-xs text-red-600">@error('title') {{$message}} @enderror</div>

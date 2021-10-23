@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GameController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MahasiswaController;
 use Illuminate\Support\Facades\Route;
@@ -25,5 +26,7 @@ Route::get('/', function () {
 
 Route::get('/home',[HomeController::class,'index'])->middleware(['auth:sanctum','verified']);
 Route::get('/dashboard',[HomeController::class,'dashboard'])->name('dashboard')->middleware(['auth:sanctum','verified']);
-Route::resource('mahasiswa',MahasiswaController::class);
-Route::get('/cari', [MahasiswaController::class, 'cari']);
+ Route::resource('mahasiswa',MahasiswaController::class);
+Route::resource('game',GameController::class);
+Route::get('/cari', [GameController::class, 'cari']);
+ Route::get('/cari', [MahasiswaController::class, 'cari']);

@@ -1,14 +1,14 @@
 <x-template-layout>
     <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Data Kependudukan
+        Data Game
     </h2>
     <div class="shadow px-6 py-4 bg-gray-200 rounded sm:px-1 sm:py-1">
         <div class="grid grid-cols-12">
             <div class="col-span-6 p-4">
-                <a href="{{route ('mahasiswa.create')}}">
+                <a href="{{route ('game.create')}}">
                     <button
                         class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                        Tambah Data Kependudukan
+                        Tambah Data Game
                     </button>
                 </a>
             </div>
@@ -33,26 +33,28 @@
                 <thead class="bg-gray-50 text-left">
                     <tr class="py-3">
                         <th>No</th>
-                        <th>Nama</th>
-                        <th>NIK</th>
-                        <th>Alamat</th>
+                        <th>Nama Game</th>
+                        <th>platform</th>
+                        <th>Tahun Rilis</th>
+                        <th>Nama Kategori</th>
                         <th>Edit Or Delete</th>
                     </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200 text-left py-32">
                     <?php $no=1;?>
-                    @foreach($mahasiswa as $mhs)
+                    @foreach($game as $gms)
                     <tr>
                         <td>{{$no}}</td>
-                        <td>{{$mhs->nama}}</td>
-                        <td>{{$mhs->nik}}</td>
-                        <td>{{$mhs->alamat}}</td>
+                        <td>{{$gms->nama_game}}</td>
+                        <td>{{$gms->platform_game}}</td>
+                        <td>{{$gms->tahun_rilis}}</td>
+                        <td>{{$gms->nama_kategori}}</td>
                         <td>
 
-                            <form action=" {{route('mahasiswa.destroy',$mhs->id)}}" method="POST">
+                            <form action=" {{route('game.destroy',$gms->id)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <a href="{{route('mahasiswa.edit',$mhs->id)}}"
+                                <a href="{{route('game.edit',$gms->id)}}"
                                     class="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-0.5 px- border border-blue-500 hover:border-transparent rounded">Edit</a>
                                 <button type="submit"
                                     class="bg-transparent hover:bg-red-500 text-red-700 font-semibold hover:text-white py-0.5 px- border border-red-500 hover:border-transparent rounded">Delete</button>
